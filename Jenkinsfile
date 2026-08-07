@@ -52,7 +52,7 @@ pipeline {
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
     sh '''
-        git config user.email "ajilashedward@gmail.com"
+        git config user.email "ajilashedward25@gmail.com"
         git config user.name "${GIT_USER_NAME}"
 
         sed -i "s|image: .*|image: ajilash25/sshape-free-website:${BUILD_NUMBER}|g" k8s/deployment.yml
