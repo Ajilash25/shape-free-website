@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: static-website1
+  name: shape-free-website
   labels:
-    app: static-website1
+    app: shape-free-website
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: static-website1
+      app: shape-free-website
   template:
     metadata:
       labels:
-        app: static-website1
+        app: shape-free-website
     spec:
       containers:
-      - name: static-website
-        image: ajilash25/static-website:6
+      - name: shape-free-website
+        image: ajilash25/shape-free-website:6
         ports:
         - containerPort: 80
         resources:
