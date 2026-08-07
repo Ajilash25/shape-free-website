@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: static-website
-        image: ajilash25/static-website1:5
+        image: ajilash25/static-website:6
         ports:
         - containerPort: 80
         resources:
