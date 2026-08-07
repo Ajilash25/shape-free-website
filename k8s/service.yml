@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: static-website-service
+  name: static-website1-service
 spec:
   type: NodePort
   ports:
@@ -9,4 +9,4 @@ spec:
     targetPort: 80
     nodePort: 30080
   selector:
-    app: static-website
+    app: static-website1
