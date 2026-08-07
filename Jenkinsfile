@@ -22,7 +22,7 @@ Pipeline {
     stage('SonarQube Analysis') {
       steps {
         script {
-            def scannerHome = tool 'sonarscanner'
+            def scannerHome = tool 'SonarScanner'
             withSonarQubeEnv('sonarqube') {
                 sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=my-ec2-project -Dsonar.sources=src/"
             }
@@ -32,7 +32,7 @@ Pipeline {
 
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "your-docker-hub-username/static-website:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "ajilash25/static-website:${BUILD_NUMBER}"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
       steps {
@@ -50,16 +50,16 @@ Pipeline {
 
     stage('Update Deployment File') {
         environment {
-            GIT_REPO_NAME = "hosting_test"
-            GIT_USER_NAME = "Doom710"
+            GIT_REPO_NAME = "shape-free-website"
+            GIT_USER_NAME = "Ajilash25"
         }
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
-                    git config user.email "xyz@gmail.com"
+                    git config user.email "ajilashedward25@gmail.com"
                     git config user.name "${GIT_USER_NAME}"
                     
-                    sed -i "s|image: .*|image: your-docker-hub-username/static-website:${BUILD_NUMBER}|g" k8s/deployment.yml
+                    sed -i "s|image: .*|image: ajilash25/static-website:${BUILD_NUMBER}|g" k8s/deployment.yml
                     
                     git add k8s/deployment.yml
                     git commit -m "Update static site image tag to ${BUILD_NUMBER} [skip ci]" || echo "No changes to commit"
