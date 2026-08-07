@@ -46,7 +46,7 @@ pipeline {
 
    stage('Update Deployment File') {
         environment {
-            GIT_REPO_NAME = "hosting_test"
+            GIT_REPO_NAME = "shape-free-website"
             GIT_USER_NAME = "Ajilash25"
         }
         steps {
