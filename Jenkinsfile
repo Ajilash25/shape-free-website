@@ -28,7 +28,7 @@ pipeline {
 
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "ajilash25/static-website:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "ajilash25/shape-free-website:${BUILD_NUMBER}"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
       steps {
@@ -55,7 +55,7 @@ pipeline {
         git config user.email "ajilashedward@gmail.com"
         git config user.name "${GIT_USER_NAME}"
 
-        sed -i "s|image: .*|image: ajilash25/static-website:${BUILD_NUMBER}|g" k8s/deployment.yml
+        sed -i "s|image: .*|image: ajilash25/sshape-free-website:${BUILD_NUMBER}|g" k8s/deployment.yml
 
         git add k8s/deployment.yml
         git commit -m "Update static site image tag to ${BUILD_NUMBER} [skip ci]" || echo "No changes to commit"
