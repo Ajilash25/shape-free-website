@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: shape-free-website
-        image: ajilash25/static-website:7
+        image: ajilash25/sshape-free-website:8
         ports:
         - containerPort: 80
         resources:
